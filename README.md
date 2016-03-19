@@ -27,14 +27,28 @@ ecosystem, and indeed it may be used from any language that offers bindings for
 Thus, workers can be implemented using whatever language is most appropriate
 for a given task. More than one worker can exist on a given compute node.
 
+# NOTE: THIS IS PRE-ALPHA QUALITY! #
+
+This is just a proof of concept and an exercise. The Python gRPC implementation 
+is currently in beta, as is version 3 of Protocol Buffers. This project cannot 
+be reasonably used in a production system until both of these projects are 
+released, and it currently uses protobufs V2. 
+
+## Installation
+
+This is pretty easy. You can just do `pip install passer`.
+
+This will eventually install `passerd`, the scheduler frontend. 
+
 ## Goals
 
 1. To further reduce latency, it should be possible to stream messages between  scheduler front ends and workers. 
-2. 
+2. Port the Sparrow Spark implementation.
+
 
 ## Developing Passer
 
-Passer requires Python 3.5 - provided you have it installed, you may do:
+Passer *currently* requires Python 3.5 - provided you have it installed, you may do:
 
     make
 
@@ -54,10 +68,3 @@ order to stay true to the naming convention used in the design paper.
 
 All fields are marked optional in the .proto files and this is to ensure 
 ongoing compatibility if this is used in production and the wire format evolves.
-
-# NOTE: THIS IS PRE-ALPHA QUALITY! #
-
-This is just a proof of concept and an exercise. The Python gRPC implementation 
-is currently in beta, as is version 3 of Protocol Buffers. This project cannot 
-be reasonably used in a production system until both of these projects are 
-released, and it currently uses protobufs V2. 
