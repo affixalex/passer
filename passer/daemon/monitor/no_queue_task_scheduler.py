@@ -1,0 +1,2 @@
+class NoQueueTaskScheduler():
+    pass

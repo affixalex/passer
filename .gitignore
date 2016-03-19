@@ -1,0 +1,14 @@
+build/
+dist/
+*.egg-info/
+*.egg
+*.py[cod]
+**/**/__pycache__/
+*.so
+*~
+passer.egg-info/
+# due to using tox and pytest
+.tox
+.cache
+*.swp
+passer/proto/*_pb*.py

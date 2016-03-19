@@ -1,0 +1,112 @@
+//
+// Copyright 2013 The Regents of The University California
+// Copyright 2016 Alex Caudill
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// 
+//   http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
+message THostPort {
+  // The host should always be represented as an IP address!
+  optional string host = 1;
+  optional int32 port = 2;
+}
+
+message TPlacementPreference {
+//  1: list<string> nodes; // List of preferred nodes.
+// 2: list<string> racks; // Not currently supported.
+  optional int32 delayThreshold = 3; // Threshold for delay scheduling (not currently supported).
+}
+
+message TResourceVector {
+  optional int64 memory = 1; // Memory, in MB
+  optional int32 cores = 2;  // # of cores
+}
+
+message TFullTaskId {
+  // Task ID as reported from the FE
+  optional string taskId = 1; 
+  // Scheduling request ID as assigned by the FE
+  optional string requestId = 2;
+  // ID of the application
+  optional string appId = 3;
+  // Address of the scheduler that scheduled the task.
+  optional THostPort schedulerAddress = 4;
+}
+
+message TMessage {
+  optional bool value = 1;
+  optional bytes message = 2;
+  optional TFullTaskId task = 3;
+}
+
+message TUserGroupInfo {
+  optional string user = 1;
+  optional string group = 2;
+  // Priority of the user.
+  // If the node monitor is using the priority task scheduler,
+  // it will place the tasks with the smallest numbered priority first.
+  optional int32 priority = 3;
+}
+
+message TTaskSpec {
+  optional string taskId = 1;
+  optional TPlacementPreference preference = 2;
+  optional bytes message = 3;
+}
+
+message TSchedulingRequest {
+  optional string app = 1;
+  // list<TTaskSpec> tasks = 2;
+  optional TUserGroupInfo user = 3;
+  // A description that will be logged alongside the requestId 
+  // that Passer assigns.
+  optional string description = 4;
+  // Hack to allow us to specify the probe ratio for certain types of requests.
+  optional double probeRatio = 5;
+}
+
+message TEnqueueTaskReservationsRequest {
+  optional string appId = 1;
+  optional TUserGroupInfo user = 2;
+  optional string requestId = 3;
+  optional THostPort schedulerAddress = 4;
+  optional int32 numTasks = 5;
+}
+
+message TCancelTaskReservationsRequest {
+  optional string requestId = 1;
+}
+
+// Information needed to launch a task.  The application and user information
+// are not needed  because they're included when the task is enqueued, so the
+// node monitor already has them at launch time.
+message TTaskLaunchSpec {
+  // Task ID (originally assigned by the application)
+  optional string taskId = 1;
+  // Description of the task passed on to the application backend
+  // (opaque to Passer).
+  optional bytes message = 2;
+}
+
+message LoadSpec {
+  optional double load = 1;
+}
+
+// Represents the State Store's view of resource consumption on a Passer node.
+// TODO: will include information about per-user accounting.
+message TNodeState {
+  // Resources used by Passer
+  optional TResourceVector sparrowUsage = 1;
+  // Resources used by other schedulers
+  optional TResourceVector externalUsage = 2;
+}

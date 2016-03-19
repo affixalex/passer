@@ -1,0 +1,124 @@
+//
+// Copyright 2013 The Regents of The University California
+// Copyright 2016 Alex Caudill
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// 
+//   http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
+import "types.proto";
+
+// The technical lead of Protocol Buffers, Kenton Varda, says:
+// If you need to return structured errors, then the right way to do it is to 
+// make your response type be able to represent that information... We felt 
+// that supporting exceptions explicitly would add too much complication with 
+// little real gain.
+
+// SchedulerService is used by application frontends to communicate with Passer
+// and place jobs.
+service SchedulerService {
+  // Register a frontend for the given application.
+  rpc registerFrontend(TMessage) returns (TMessage);
+
+  // Submit a job composed of a list of individual tasks.
+  rpc submitJob(TSchedulingRequest) returns (TMessage);
+  // throws (1: types.IncompleteRequestException e);
+
+  // Send a message to be delivered to the frontend for {app} pertaining
+  // to the task {taskId}. The {status} field allows for application-specific
+  // status enumerations. Right now this is used only for Spark, which relies on
+  // the scheduler to send task completion messages to frontends.
+  // TODO: Rethink this.
+  rpc sendFrontendMessage(TMessage) returns (TMessage);
+}
+
+service GetTaskService {
+  // Called by a node monitor when it has available responses to run a task. 
+  // Always called in esponse to an enqueueTask() request from this scheduler.    // requestId specifies the ID given in that enqueueTask() request.
+  // Currently, we only support returning 0 or 1 task specs, where 0 signals 
+  // that the given request has no more tasks that can be launched on the node.
+  // TODO: Add a numTasks parameter to signal how many slots are free
+  // TODO: support returning more than 1 task.
+  rpc getTask(TMessage) returns (TMessage);
+  // FIXME: list<types.TTaskLaunchSpec> getTask(1: string requestId, 2:
+  // types.THostPort nodeMonitorAddress);
+}
+
+// A service used by application backends to coordinate with Passer.
+service NodeMonitorService {
+  // Register this machine as a backend for the given application.
+  // FIXME:
+  // bool registerBackend(1: string app, 2: string listenSocket);
+
+  // Inform the NodeMonitor that a particular task has finished
+  // FIXME:
+  // void tasksFinished(1: list<types.TFullTaskId> tasks);
+
+  // See SchedulerService.sendFrontendMessage
+  // FIXME:
+  // void sendFrontendMessage(1: string app, 2: types.TFullTaskId taskId,
+  //                       3: i32 status, 4: binary message);
+  rpc sendFrontendMessage(TMessage) returns (TMessage);
+}
+
+// A service that backends are expected to extend. Handles communication
+// from a NodeMonitor.
+service BackendService {
+  // FIXME:
+  //void launchTask(1: binary message, 2: types.TFullTaskId taskId,
+  //                3: types.TUserGroupInfo user);
+}
+
+// A service that frontends are expected to extend. Handles communication from
+// a Scheduler.
+service FrontendService {
+  // See SchedulerService.sendFrontendMessage
+  // FIXME:
+  // void frontendMessage(1: types.TFullTaskId taskId, 2: i32 status,
+  //                     3: binary message);
+}
+
+// The InternalService exposes state about application backends to other
+// Passer daemons.
+service InternalService {
+  // Enqueues a reservation to launch the given number of tasks. 
+  // The NodeMonitor sends a GetTask() RPC to the given schedulerAddress when 
+  // it is ready to launch a task, for each enqueued task reservation.
+  // Returns whether or not the task was successfully enqueued.
+  // FIXME:
+  //bool enqueueTaskReservations(1: types.TEnqueueTaskReservationsRequest request);
+
+  // Cancels reservations for jobs for which all tasks have been launched.
+  // FIXME:
+  // void cancelTaskReservations(1: types.TCancelTaskReservationsRequest request);
+}
+
+service SchedulerStateStoreService {
+  // Message from the state store giving the scheduler new information
+  // FIXME:
+  // void updateNodeState(1: map<string, types.TNodeState> snapshot);
+}
+
+service StateStoreService {
+  // Register a scheduler with the given socket address (IP: Port)
+  // FIXME:
+  //void registerScheduler(1: string schedulerAddress);
+
+  // Register a node monitor with the given socket address (IP: Port)
+  // FIXME:
+  //void registerNodeMonitor(1: string nodeMonitorAddress);
+}
+
+// Service to use for debugging network latencies.
+service PongService {
+//  string ping(1: string data);
+}
