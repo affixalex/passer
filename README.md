@@ -1,7 +1,7 @@
 # Passer - A Low Latency Task Scheduling System
 
 ![Build Status](https://travis-ci.org/hypoalex/passer.svg) 
-[![Documentation Status](https://readthedocs.org/projects/passer/badge/?version=latest)](http://passer.readthedocs.org/en/latest/?badge=latest)
+[![Documentation Status](https://readthedocs.org/projects/passer/badge/?version=latest)](http://passer.readthedocs.org/en/latest)
 
 This is an implementation of [the Sparrow task scheduler design](sparrow.pdf) 
 using Python 3.5 and [grpc](http://www.grpc.io/) instead of Java and Swift. 
