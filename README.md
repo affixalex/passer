@@ -1,6 +1,7 @@
 # Passer - A Low Latency Task Scheduling System
 
-![Build Status](https://travis-ci.org/hypoalex/passer.svg)
+![Build Status](https://travis-ci.org/hypoalex/passer.svg) 
+[![Documentation Status](https://readthedocs.org/projects/passer/badge/?version=latest)](http://passer.readthedocs.org/en/latest/?badge=latest)
 
 This is an implementation of [the Sparrow task scheduler design](sparrow.pdf) 
 using Python 3.5 and [grpc](http://www.grpc.io/) instead of Java and Swift. 
@@ -8,6 +9,9 @@ Documentation will use terminology from the design paper, so it is worth
 reading. Note that this is an idiomatic Python implementation and not a 1:1
 port of [the Java Sparrow implementation](https://github.com/radlab/sparrow/),
 but it is very true to the paper in most ways.
+
+While this will initially be written in pure Python, it will eventually 
+transition to using Cython once it is functionally complete and well-tested.
 
 Passer aims to be an opinionated evolution of Sparrow, intended for use in a 
 Docker-powered microservice environment making use of Consul for service 
