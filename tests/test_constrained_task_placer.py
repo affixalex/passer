@@ -1,4 +1,4 @@
-import ../daemon/scheduler/constrained_task_placer
+from passer import daemon
 import unittest
 
 class TestConstrainedTaskPlacer():
