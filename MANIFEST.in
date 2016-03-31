@@ -1,13 +1,21 @@
 # Include the license file
 include LICENSE.txt
 
+# Include requirements
+include requirements.txt
+
 # Include the library files
 recursive-include passer *
 
-# If using Python 2.6 or less, then have to include package data, even though
-# it's already declared in setup.py
-# include sample/*.dat
+exclude proto
+exclude Makefile
+exclude README.md
+exclude conf.py
+
+exclude dev-requirements.txt
+exclude sparrow.pdf
 
 global-exclude *.pyc
 global-exclude *.pyo
 global-exclude .git
+global-exclude *.proto
