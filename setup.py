@@ -7,11 +7,20 @@ from os import path
 here = path.abspath(path.dirname(__file__))
 
 setup(
-    name = 'passer',
-    version = '0.0.1',
-    author = 'Alex Caudill',
-    author_email = 'nobody@nowhere.io',
-    url = 'https://github.com/hypoalex/passer',
-    description = 'A Python 3.5 implementation of the Sparrow scheduler',
+    name='passer',
+    version='0.0.2',
+    author='Alex Caudill',
+    author_email='hypoalex@users.noreply.github.com',
+    url='https://github.com/hypoalex/passer',
+    description='A Python 3.5 implementation of the Sparrow scheduler',
     packages=['passer', 'passer.proto', 'passer.daemon'],
+    platforms="Linux, Mac OS X",
+    classifiers=[
+        'Intended Audience :: Developers',
+        'Intended Audience :: System Administrators',
+        'Intended Audience :: Science/Research',
+        'License :: OSI Approved :: Apache License',
+        'Programming Language :: Python',
+        'Programming Language :: Python :: 3',
+    ],
 )
