@@ -24,7 +24,7 @@ class PasserConfig(object):
         # will consist of a single port or will be left unspecified.
         self.internal_ports = []
         # The number of node monitoring threads.
-        self.nm_threads = self.system_cpus
+        self.nm_threads = self.system_cpus * 2
         # The type of task scheduler to use on our node monitor.
         # Values: "fifo", "round_robin", "priority"
         self.nm_task_scheduler_type = "fifo"
