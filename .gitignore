@@ -12,3 +12,4 @@ passer.egg-info/
 .cache
 *.swp
 passer/proto/*_pb*.py
+NOTES.md
