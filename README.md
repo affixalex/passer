@@ -12,6 +12,7 @@ but it is very true to the paper in most ways.
 
 While this will initially be written in pure Python, it will eventually 
 transition to using Cython once it is functionally complete and well-tested.
+Exceeding the performance of Sparrow is a goal for the 1.0 release.
 
 Passer aims to be an opinionated evolution of Sparrow, intended for use in a 
 Docker-powered microservice environment making use of Consul for service 
