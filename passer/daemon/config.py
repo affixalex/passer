@@ -1,17 +1,15 @@
 class PasserConfig(object):
     def __init__(self):
-        # The amount of memory to use in MB. Defaults to 1024MB
-        self.system_memory = 1024
-        # The number of CPUs in the system. Defaults to 2.
+        # The number of usable CPUs in the system. Defaults to 2.
         self.system_cpus = 2
+        # The number of threads to use. Defaults to 4.
+        self.system_threads = 4
         # Values: 1-5 "fatal", "error", "warn", "info", "debug"
-        self.verbosity = 1
+        self.verbosity = 0
         # Listen port for the scheduler
         self.scheduler_port = 5010
-        self.scheduler_threads = self.system_cpus
         # Listen port for the state store -> scheduler interface
         self.scheduler_state_port = 5011
-        self.scheduler_state_threads = self.system_cpus
         # Should the scheduler cancel outstanding reservations when all of a 
         # job's tasks have been scheduled? True or False
         self.default_cancellation = True
@@ -23,8 +21,6 @@ class PasserConfig(object):
         # that this daemon is supposed to run. In most deployment scenarios this
         # will consist of a single port or will be left unspecified.
         self.internal_ports = []
-        # The number of node monitoring threads.
-        self.nm_threads = self.system_cpus * 2
         # The type of task scheduler to use on our node monitor.
         # Values: "fifo", "round_robin", "priority"
         self.nm_task_scheduler_type = "fifo"
