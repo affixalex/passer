@@ -1,10 +1,8 @@
 # Passer 
-[![Build Status](https://travis-ci.org/hypoalex/passer.svg)]
-[![Documentation Status](https://readthedocs.org/projects/passer/badge/?version=latest)](http://passer.readthedocs.org/en/latest)[![Gitter chat](https://badges.gitter.im/hypoalex/passer.png)](https://gitter.im/hypoalex/passer)
 ## A Low Latency Distributed Task Scheduler
-
-
-
+[![Build Status](https://travis-ci.org/hypoalex/passer.svg)](https://travis-ci.org/hypoalex/passer)
+[![Documentation Status](https://readthedocs.org/projects/passer/badge/?version=latest)](http://passer.readthedocs.org/en/latest)
+[![Gitter chat](https://badges.gitter.im/hypoalex/passer.png)](https://gitter.im/hypoalex/passer)
 
 
 This is an implementation of [the Sparrow task scheduler design](sparrow.pdf) 
