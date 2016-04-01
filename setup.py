@@ -1,6 +1,3 @@
-# https://github.com/pypa/sampleproject/blob/master/setup.py
-
-# Always prefer setuptools over distutils
 from setuptools import setup
 from os import path
 # Get a handle on where we're at :)
@@ -23,4 +20,9 @@ setup(
         'Programming Language :: Python',
         'Programming Language :: Python :: 3',
     ],
+    entry_points = {
+     'console_scripts': [
+      'passerd = passer.daemon:main',
+     ],
+    }
 )

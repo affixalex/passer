@@ -1,5 +1,5 @@
-import ../daemon/scheduler/cancellation_service
-import unittest
+#import passer.daemon.scheduler.cancellation_service
+#import unittest
 
 class TestCancellationService():
     pass

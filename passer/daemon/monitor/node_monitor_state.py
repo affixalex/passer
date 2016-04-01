@@ -14,5 +14,24 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+
+"""
+A Node Monitor which is responsible for communicating with application
+backends. It maybe concurrently accessed when handling multiple function 
+calls simultaneously.
+"""
 class NodeMonitorState():
-    pass
+    """
+    Initialize state storage. This should open connections to any external
+    services if required.
+    """
+    def __init(conf):
+        pass
+    
+    """
+    Register a backend identified by {@code appId} which can be reached via
+    a NodeMonitor running at the given address. The node is assumed to have
+    resources given by {@code capacity}.
+    """
+    def register_backend(app_id, node_monitor):
+        pass

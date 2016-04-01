@@ -20,9 +20,6 @@ from concurrent.futures import ThreadPoolExecutor
 """
 This class implements the Passer scheduling functionality.
 """
-# Based on:
-# https://github.com/radlab/sparrow/blob/master/src/main/java/edu/berkeley/sparrow/daemon/scheduler/Scheduler.java
-# https://github.com/radlab/sparrow/blob/master/src/main/java/edu/berkeley/sparrow/daemon/scheduler/SchedulerThrift.java
 class Scheduler():
     def __init__(conf, socket):
         self.logger = ""
@@ -32,13 +29,13 @@ class Scheduler():
         # How many times the special case has been triggered
         self.special_case_counter = 0
         # A THostPort describing the address of this scheduler
-        self.address = ""
+        self.address = None
         # A client pool for communicating with node monitors
         self.node_monitor_client_pool = ThreadPoolExecutor(conf.system_cpus)
         # A client pool for communicating with front ends
         self.frontend_client_pool = ThreadPoolExecutor(conf.system_cpus)
         # Information about cluster workload due to other schedulers
-        self.state = ""
+        self.state = None
         # Probe ratios to use if the probe ratio is not explicitly set 
         self.default_probe_ratio_unconstrained = ""
         self.default_probe_ratio_constrained = ""

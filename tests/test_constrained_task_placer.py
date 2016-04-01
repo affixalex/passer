@@ -1,5 +1,5 @@
-from passer import daemon
-import unittest
+#from passer import daemon
+#import unittest
 
 class TestConstrainedTaskPlacer():
     pass

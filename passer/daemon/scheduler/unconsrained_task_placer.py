@@ -14,8 +14,28 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from collections import deque
+
 """
 A task placer for jobs whose tasks have no placement constraints.
 """
 class UnconstrainedTaskPlacer():
-    
+    def __init__(request_id, probe_ratio):
+        # ID of the request associated with this task placer.
+        self.request_id = request_id
+        self.probe_ratio = probe_ratio
+        # Specifications for tasks that have not yet been launched.
+        self.unlaunched_tasks = []
+        # For each node monitor where reservations were enqueued, the number 
+        # of reservations that were enqueued there.
+        self.outstanding_reservations = dict()
+        # Whether the remaining reservations have been cancelled.
+        self.cancelled = False
+        
+    def get_enqueue_task_reservations_requests(
+      scheduling_request,
+      request_id,
+      nodes,
+      scheduler_address):
+
+        print("test")

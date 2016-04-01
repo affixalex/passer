@@ -5,6 +5,9 @@ develop: proto
 	protoc --proto_path=./proto/ --python_out=passer/proto proto/service.proto
 	python setup.py develop
 
+install:
+	python setup.py install
+
 test:
 	tox
 

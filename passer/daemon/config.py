@@ -1,11 +1,11 @@
 class PasserConfig(object):
     def __init__(self):
-        # The amount of memory in the system in MB. Defaults to 1024MB
+        # The amount of memory to use in MB. Defaults to 1024MB
         self.system_memory = 1024
         # The number of CPUs in the system. Defaults to 2.
         self.system_cpus = 2
-        # Values: "debug", "info", "warn", "error", "fatal"
-        self.log_level = "warn"
+        # Values: 1-5 "fatal", "error", "warn", "info", "debug"
+        self.verbosity = 1
         # Listen port for the scheduler
         self.scheduler_port = 5010
         self.scheduler_threads = self.system_cpus
@@ -28,10 +28,6 @@ class PasserConfig(object):
         # The type of task scheduler to use on our node monitor.
         # Values: "fifo", "round_robin", "priority"
         self.nm_task_scheduler_type = "fifo"
-        # The type of deployment.
-        # Values: "standalone", "configbased"
-        # Only "configbased" currently works.
-        self.deployment_mode = "configbased"
         # The ratio of probes used in a scheduling decision to tasks.
         # For requests without constraints...
         self.default_sample_ratio = 1.05

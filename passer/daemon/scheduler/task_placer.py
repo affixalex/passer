@@ -20,8 +20,8 @@
  
    (1) Task reservations are enqueued on backends. Typically more task reservations 
        are enqueued than there are tasks that need to run (the ratio of task 
-       reservations to tasks is set using {@link SparrowConf.SAMPLE_RATIO} and 
-       {@link SparrowConf.SAMPLE_RATIO_CONSTRAINED}).
+       reservations to tasks is set using {@link PasserConf.SAMPLE_RATIO} and 
+       {@link PasserConf.SAMPLE_RATIO_CONSTRAINED}).
    (2) When backends are ready to run a task, they reply to the scheduler with a 
        GetTask() RPC. The scheduler passes this call on to the task placer; if 
        there are tasks remaining that can be run on that machine, the TaskPlacer 
@@ -35,7 +35,6 @@
  TaskPlacers are not thread safe. 
  Access to a particular TaskPlacer should be serialized.
 """
-
 class TaskPlacer():
     pass
     """
