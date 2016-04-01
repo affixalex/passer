@@ -1,5 +1,7 @@
 # Passer - A Low Latency Task Scheduling System
 
+[![Join the chat at https://gitter.im/hypoalex/passer](https://badges.gitter.im/hypoalex/passer.svg)](https://gitter.im/hypoalex/passer?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 ![Build Status](https://travis-ci.org/hypoalex/passer.svg) 
 [![Documentation Status](https://readthedocs.org/projects/passer/badge/?version=latest)](http://passer.readthedocs.org/en/latest)
 
