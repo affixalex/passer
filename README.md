@@ -1,7 +1,11 @@
-# Passer - A Low Latency Task Scheduling System
+# Passer 
+[![Build Status](https://travis-ci.org/hypoalex/passer.svg)]
+[![Documentation Status](https://readthedocs.org/projects/passer/badge/?version=latest)](http://passer.readthedocs.org/en/latest)[![Gitter chat](https://badges.gitter.im/hypoalex/passer.png)](https://gitter.im/hypoalex/passer)
+## A Low Latency Distributed Task Scheduler
 
-![Build Status](https://travis-ci.org/hypoalex/passer.svg) 
-[![Documentation Status](https://readthedocs.org/projects/passer/badge/?version=latest)](http://passer.readthedocs.org/en/latest)
+
+
+
 
 This is an implementation of [the Sparrow task scheduler design](sparrow.pdf) 
 using Python 3.5 and [grpc](http://www.grpc.io/) instead of Java and Swift. 
@@ -45,8 +49,6 @@ released, and it currently uses protobufs V2.
 
 This is pretty easy. You can just do `pip install passer`.
 
-This will eventually install `passerd`, the scheduler frontend. 
-
 ## Goals
 
 1. To further reduce latency, it should be possible to stream messages between  scheduler front ends and workers. 
@@ -75,3 +77,4 @@ order to stay true to the naming convention used in the design paper.
 
 All fields are marked optional in the .proto files and this is to ensure 
 ongoing compatibility if this is used in production and the wire format evolves.
+The entire concept of "required" fields is removed in protobufs 3.0.
