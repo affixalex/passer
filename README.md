@@ -38,10 +38,11 @@ for a given task. More than one worker can exist on a given compute node.
 
 # NOTE: THIS IS PRE-ALPHA QUALITY! #
 
-This is just a proof of concept and an exercise. The Python gRPC implementation 
-is currently in beta, as is version 3 of Protocol Buffers. This project cannot 
-be reasonably used in a production system until both of these projects are 
-released, and it currently uses protobufs V2. 
+This doesn't do anything let. The Python gRPC implementation in beta as of my 
+last commit, as was version 3 of Protocol Buffers. This project couldn't be
+reasonably used in a production system until both of these projects were
+released, along with protobufs V3. Now that they have been, I'm looking at this
+again.
 
 ## Installation
 
