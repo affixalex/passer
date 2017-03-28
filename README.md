@@ -28,7 +28,7 @@ While this is not Sparrow, it is definitely a member of
 the design paper are a result of using Protocol Buffers instead of Swift, and I 
 will try to document these changes in a separate document.
 
-The [Motivation and Design Principles](http://www.grpc.io/posts/principles) of 
+The [Motivation and Design Principles](http://www.grpc.io/blog/principles) of 
 gRPC is a great resource to aid in understanding many aspects of this system. 
 By virtue of using gRPC, usage of Passer is not limited to the Python 
 ecosystem, and indeed it may be used from any language that offers bindings for 
