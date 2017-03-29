@@ -4,9 +4,16 @@
 [![Documentation Status](https://readthedocs.org/projects/passer/badge/?version=latest)](http://passer.readthedocs.org/en/latest)
 [![Gitter chat](https://badges.gitter.im/hypoalex/passer.png)](https://gitter.im/hypoalex/passer)
 
+# NOTE: THIS IS PRE-ALPHA QUALITY! #
 
-This is an implementation of [the Sparrow task scheduler design](sparrow.pdf) 
-using Python 3.5 and [grpc](http://www.grpc.io/) instead of Java and Swift. 
+This doesn't do anything yet. The Python gRPC implementation was beta last time 
+I worked on this, as was version 3 of Protocol Buffers. This project couldn't be
+reasonably used in a production system until both of these projects were
+released, along with protobufs V3.
+
+Now that they have been, I'm looking at this again!
+
+This aims to be an implementation of [the Sparrow task scheduler design](sparrow.pdf)using Python 3.5 and [grpc](http://www.grpc.io/) instead of Java and Swift.
 Documentation will use terminology from the design paper, so it is worth 
 reading. Note that this is an idiomatic Python implementation and not a 1:1
 port of [the Java Sparrow implementation](https://github.com/radlab/sparrow/),
@@ -35,15 +42,6 @@ ecosystem, and indeed it may be used from any language that offers bindings for
 [Google Protocol Buffers](https://developers.google.com/protocol-buffers/).
 Thus, workers can be implemented using whatever language is most appropriate
 for a given task. More than one worker can exist on a given compute node.
-
-# NOTE: THIS IS PRE-ALPHA QUALITY! #
-
-This doesn't do anything yet. The Python gRPC implementation was beta last time 
-I worked on this, as was version 3 of Protocol Buffers. This project couldn't be
-reasonably used in a production system until both of these projects were
-released, along with protobufs V3.
-
-Now that they have been, I'm looking at this again!
 
 ## Installation
 
